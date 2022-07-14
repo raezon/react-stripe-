@@ -48,7 +48,7 @@ function HomePage() {
       return;
     }
 
-    const res = await axios.post('http://localhost:8000/api/stripe/pay', {email: email,amount:500,currency: 'usd'});
+    const res = await axios.post('http://127.0.0.1:5000/checkout/', {email: email,amount:500,currency: 'usd'});
 
     const clientSecret = res.data['client_secret'];
 
