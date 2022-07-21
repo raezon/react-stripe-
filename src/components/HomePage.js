@@ -48,7 +48,7 @@ function HomePage() {
       return;
     }
 
-    const res = await axios.post('http://127.0.0.1:5000/checkout/', {email: email,amount:500,currency: 'usd'});
+    const res = await axios.post('https://api.gutesknie.de/api/stripe/pay', {email: email,amount:523323,currency: 'usd'});
 
     const clientSecret = res.data['client_secret'];
 
@@ -95,7 +95,7 @@ function HomePage() {
     if (result.error) {
       console.log(result.error.message);
     } else {
-      const res = await axios.post('http://localhost:8000/api/stripe/subscribe', {'payment_method': result.paymentMethod.id, 'email': email});
+      const res = await axios.post('https://api.gutesknie.de/api/stripe/pay', {'payment_method': result.paymentMethod.id, 'email': email});
       // eslint-disable-next-line camelcase
       const {client_secret, status} = res.data;
 
